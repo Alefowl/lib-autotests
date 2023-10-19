@@ -1,3 +1,11 @@
+import time
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+driver = webdriver.Chrome()
+
+
 driver.get('http://127.0.0.1:8080/123/add-a/')
 time.sleep(3)
 english = driver.find_element(By.XPATH, '//input[@id="english_name" and @required=""]')
