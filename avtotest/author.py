@@ -6,7 +6,19 @@ from selenium.webdriver.common.by import By
 driver = webdriver.Chrome()
 
 
-driver.get('http://127.0.0.1:8080/123/add-a/')
+driver.get('http://127.0.0.1:8080/auth/authentication')
+time.sleep(3)
+
+name = driver.find_element("xpath", '//input[@name="login"]')
+name.send_keys("123")
+password = driver.find_element("xpath", '//input[@name="password"]')
+password.send_keys("123456")
+btn = driver.find_element("xpath", '//input[@value="Log in"]')
+btn.click()
+time.sleep(5)
+
+author = driver.find_element("xpath", '/html/body/header/div/table/tbody/tr[4]/td/a')
+author.click()
 time.sleep(3)
 english = driver.find_element(By.XPATH, '//input[@id="english_name" and @required=""]')
 english.send_keys('Dostoevskii')
