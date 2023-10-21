@@ -1,9 +1,13 @@
 import time
+from selenium.webdriver.support import expected_conditions as EC, wait
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import wait
+from selenium.webdriver.support.wait import WebDriverWait
 
 driver = webdriver.Chrome()
+wait = WebDriverWait(driver, 10, poll_frequency=1)
 driver.get('http://127.0.0.1:8080/auth/authentication')
 time.sleep(3)
 
@@ -33,3 +37,18 @@ time.sleep(5)
 add.click()
 
 time.sleep(5)
+
+alert = wait.until(EC.alert_is_present())
+
+driver.switch_to.alert
+time.sleep(3)
+alert.accept()
+
+
+alert = wait.until(EC.alert_is_present())
+
+driver.switch_to.alert
+time.sleep(3)
+alert.accept()
+
+time.sleep(3)

@@ -1,10 +1,11 @@
 import time
-
+from selenium.webdriver.support import expected_conditions as EC, wait
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
 
 driver = webdriver.Chrome()
-
+wait = WebDriverWait(driver, 10, poll_frequency=1)
 
 driver.get('http://127.0.0.1:8080/auth/authentication')
 time.sleep(3)
@@ -20,7 +21,7 @@ time.sleep(5)
 author = driver.find_element("xpath", '/html/body/header/div/table/tbody/tr[4]/td/a')
 author.click()
 time.sleep(3)
-english = driver.find_element(By.XPATH, '//input[@id="english_name" and @required=""]')
+english = driver.find_element(By.XPATH, '//input[@id="english_name"]')
 english.send_keys('Dostoevskii')
 rus = driver.find_element(By.XPATH, '//input[@id="russian_name"]')
 rus.send_keys('Достоевский')
@@ -37,4 +38,19 @@ languages.click()
 time.sleep(3)
 add_book = driver.find_element(By.XPATH, '//input[@type="submit"]')
 add_book.click()
-time.sleep(10)
+time.sleep(3)
+
+alert = wait.until(EC.alert_is_present())
+
+driver.switch_to.alert
+time.sleep(3)
+alert.accept()
+
+
+alert = wait.until(EC.alert_is_present())
+
+driver.switch_to.alert
+time.sleep(3)
+alert.accept()
+
+time.sleep(3)
