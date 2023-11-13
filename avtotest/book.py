@@ -52,7 +52,6 @@ def add_book(login, password, title, author, date, metabooks):
 
 
     alert = wait.until(EC.alert_is_present())
-
     driver.switch_to.alert
     time.sleep(3)
     alert.accept()

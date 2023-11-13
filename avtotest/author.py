@@ -1,17 +1,8 @@
 import time
 import psycopg2
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC, wait
-from selenium import webdriver
-from selenium.webdriver.support.wait import WebDriverWait
-
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
-
-
-
-
-
 
 def add_author(login1, password, english_name, russian_name, german_name, french_name, birth_date, death_date):
     service = Service(executable_path=ChromeDriverManager().install())
@@ -27,7 +18,6 @@ def add_author(login1, password, english_name, russian_name, german_name, french
     btn = driver.find_element("xpath", '//input[@value="Log in"]')
     btn.click()
     time.sleep(5)
-
     author = driver.find_element("xpath", '//tbody/tr[4]/td/a')
     author.click()
     time.sleep(3)

@@ -13,7 +13,6 @@ def add_text(login, password, name_book):
 
     driver.get('http://127.0.0.1:8080/auth/authentication')
     time.sleep(3)
-
     name = driver.find_element("xpath", '//input[@name="login"]')
     name.send_keys(login)
     password1 = driver.find_element("xpath", '//input[@name="password"]')
@@ -57,3 +56,4 @@ def add_text(login, password, name_book):
 
     cursor.close()
     connect.close()
+

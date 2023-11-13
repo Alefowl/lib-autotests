@@ -7,8 +7,6 @@ from selenium.webdriver.chrome.service import Service
 def cookie():
     service = Service(executable_path=ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service)
-
-
     driver.get('http://127.0.0.1:8080/auth/authentication')
     time.sleep(3)
 
