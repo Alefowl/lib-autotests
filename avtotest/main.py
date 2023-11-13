@@ -1,5 +1,5 @@
 from register import register
-from login import *
+from login import login
 from author import add_author
 from metabook import add_metabook
 from book import add_book

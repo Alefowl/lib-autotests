@@ -20,13 +20,13 @@ def download(login, password):
     btn = driver.find_element("xpath", '//input[@value="Log in"]')
     btn.click()
     time.sleep(5)
-    mybooks = driver.find_element("xpath", '/html/body/header/div/table/tbody/tr[3]/td/a')
+    mybooks = driver.find_element("xpath", '//div[1]/div/div[1]/div/a[2]')
     mybooks.click()
     time.sleep(3)
     bulingual = driver.find_element("xpath", '//a[text()="Шопен"]')
     bulingual.click()
     time.sleep(3)
-    btn = driver.find_element("xpath", '//header/p[2]/table/tbody/tr[1]/td/button')
+    btn = driver.find_element("xpath", '//tr[2]/td[3]/button')
     btn.click()
     time.sleep(5)
     alert = wait.until(EC.alert_is_present())
@@ -34,4 +34,4 @@ def download(login, password):
     time.sleep(3)
     alert.accept()
 
-
+download("12", "12345")
