@@ -2,11 +2,13 @@ import time
 
 import psycopg2
 from selenium import webdriver
-from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 
 def register(login, password, email):
-    driver = webdriver.Chrome()
-    driver.get('http://127.0.0.1:8080/auth/registration')
+    service = Service(executable_path=ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service)
+    driver.get('http://127.0.0.1:8080/auth/registration/')
     name = driver.find_element("xpath", '//input[@name="login"]')
     name.send_keys(login)
     name2 = driver.find_element("xpath", '//input[@name="password"]')
@@ -26,8 +28,6 @@ def register(login, password, email):
         print("Запись авторизации найдена!")
     else:
         print("Запись авторизации не найдена.")
-
-
     cursor.close()
     connect.close()
 
