@@ -1,8 +1,6 @@
 import time
-
-import psycopg2
+mport psycopg2
 from selenium.webdriver.support import expected_conditions as EC, wait
->>>>>>> master
 from selenium.webdriver.support.select import Select
 from selenium import webdriver
 from selenium.webdriver.support import wait
