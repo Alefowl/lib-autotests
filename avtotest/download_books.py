@@ -23,7 +23,7 @@ def download(login, password):
     mybooks = driver.find_element("xpath", '//div[1]/div/div[1]/div/a[2]')
     mybooks.click()
     time.sleep(3)
-    bulingual = driver.find_element("xpath", '//a[text()="Шопен"]')
+    bulingual = driver.find_element("xpath", '//a[text()="Винни"]')
     bulingual.click()
     time.sleep(3)
     btn = driver.find_element("xpath", '//tr[2]/td[3]/button')
