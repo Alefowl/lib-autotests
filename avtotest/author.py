@@ -1,16 +1,15 @@
 import time
+from selenium.webdriver.support import expected_conditions as EC
 import psycopg2
-from selenium.webdriver.support import expected_conditions as EC, wait
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
-
-
-
-
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 
 def add_author(login1, password, english_name, russian_name, german_name, french_name, birth_date, death_date):
-    driver = webdriver.Chrome()
+    service = Service(executable_path=ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service)
     wait = WebDriverWait(driver, 10, poll_frequency=1)
     driver.get('http://127.0.0.1:8080/auth/authentication')
     time.sleep(3)
@@ -22,8 +21,7 @@ def add_author(login1, password, english_name, russian_name, german_name, french
     btn = driver.find_element("xpath", '//input[@value="Log in"]')
     btn.click()
     time.sleep(5)
-
-    author = driver.find_element("xpath", '/html/body/header/div/table/tbody/tr[4]/td/a')
+    author = driver.find_element("xpath", '//tbody/tr[4]/td/a')
     author.click()
     time.sleep(3)
     english = driver.find_element(By.XPATH, '//input[@id="english_name"]')

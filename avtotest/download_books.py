@@ -1,11 +1,13 @@
 import time
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 
 def download(login, password):
-    driver = webdriver.Chrome()
+    service = Service(executable_path=ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service)
     wait = WebDriverWait(driver, 10, poll_frequency=1)
 
     driver.get('http://127.0.0.1:8080/auth/authentication')
@@ -18,19 +20,16 @@ def download(login, password):
     btn = driver.find_element("xpath", '//input[@value="Log in"]')
     btn.click()
     time.sleep(5)
-
-    mybooks = driver.find_element("xpath", '//tr[1]/td/a')
+    mybooks = driver.find_element("xpath", '//div[1]/div/div[1]/div/a[2]')
     mybooks.click()
     time.sleep(3)
-    bulingual = driver.find_element("xpath", '//a[text()="Колобок"]')
+    bulingual = driver.find_element("xpath", '//a[text()="Винни"]')
     bulingual.click()
     time.sleep(3)
-    btn = driver.find_element("xpath", '//p[2]/table/tbody/tr[1]/td[3]/button')
+    btn = driver.find_element("xpath", '//tr[2]/td[3]/button')
     btn.click()
     time.sleep(5)
-
     alert = wait.until(EC.alert_is_present())
-
     driver.switch_to.alert
     time.sleep(3)
     alert.accept()

@@ -1,19 +1,22 @@
 import time
 
 import psycopg2
+
+import psycopg2
 from selenium.webdriver.support import expected_conditions as EC, wait
 from selenium.webdriver.support.select import Select
 from selenium import webdriver
 from selenium.webdriver.support import wait
 from selenium.webdriver.support.wait import WebDriverWait
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 
 def add_metabook(login, password, title, size, create_date, authors):
-    driver = webdriver.Chrome()
+    service = Service(executable_path=ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service)
     wait = WebDriverWait(driver, 10, poll_frequency=1)
     driver.get('http://127.0.0.1:8080/auth/authentication')
     time.sleep(3)
-
-
     name = driver.find_element("xpath", '//input[@name="login"]')
     name.send_keys(login)
     password1 = driver.find_element("xpath", '//input[@name="password"]')
@@ -21,8 +24,7 @@ def add_metabook(login, password, title, size, create_date, authors):
     btn = driver.find_element("xpath", '//input[@value="Log in"]')
     btn.click()
     time.sleep(5)
-
-    metab = driver.find_element("xpath", '/html/body/header/div/table/tbody/tr[6]/td/a')
+    metab = driver.find_element("xpath", '//tbody/tr[6]/td/a')
     metab.click()
     time.sleep(3)
     title1 = driver.find_element("xpath", "//input[@id='title']")
